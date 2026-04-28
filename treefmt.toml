@@ -1,0 +1,4 @@
+[formatter.terraform]
+command = "tofu"
+options = ["fmt"]
+includes = ["*.tf", "*.tofu"]
