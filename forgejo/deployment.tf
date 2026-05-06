@@ -50,16 +50,16 @@ resource "kubernetes_deployment_v1" "forgejo" {
           }
 
           env {
-            name = "FORGEJO__server__START_SSH_SERVER"
+            name  = "FORGEJO__server__START_SSH_SERVER"
             value = "true"
           }
-          
+
           env {
-            name = "FORGEJO__server__SSH_PORT"
+            name  = "FORGEJO__server__SSH_PORT"
             value = "2222"
           }
           env {
-            name = "FORGEJO__server__SSH_LISTEN_PORT"
+            name  = "FORGEJO__server__SSH_LISTEN_PORT"
             value = "2222"
           }
 
@@ -212,7 +212,7 @@ resource "kubernetes_service_v1" "forgejo" {
       target_port = 2222
     }
 
-    type = "LoadBalancer"
+    type                    = "LoadBalancer"
     external_traffic_policy = "Local"
 
     external_ips = [var.INSTANCE_IP]
@@ -231,7 +231,7 @@ resource "kubernetes_ingress_v1" "forgejo" {
 
   spec {
     rule {
-      host = "${var.SUB_DOMAIN}.${var.ROOT_DOMAIN}" 
+      host = "${var.SUB_DOMAIN}.${var.ROOT_DOMAIN}"
       http {
         path {
           path      = "/"
@@ -285,7 +285,7 @@ resource "kubernetes_manifest" "letsencrypt" {
     spec = {
       acme = {
         server = "https://acme-v02.api.letsencrypt.org/directory"
-        email  = var.OWNER_EMAIL
+        email  = var.ADMIN_EMAIL
         privateKeySecretRef = {
           name = "letsencrypt"
         }

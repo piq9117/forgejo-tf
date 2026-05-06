@@ -56,5 +56,5 @@ locals {
 }
 
 provider "digitalocean" {
-  token             = var.DIGITALOCEAN_TOKEN
+  token = var.DIGITALOCEAN_TOKEN
 }
