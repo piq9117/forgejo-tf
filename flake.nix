@@ -36,6 +36,7 @@
             k9s
             opentofu
             treefmt
+            velero
           ];
           shellHook = ''
             export PS1='[$PWD]\n❄ '
