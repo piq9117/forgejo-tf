@@ -62,6 +62,3 @@ variable "DIGITALOCEAN_TOKEN" {
   type = string
 }
 
-variable "OWNER_EMAIL" {
-  type = string
-}

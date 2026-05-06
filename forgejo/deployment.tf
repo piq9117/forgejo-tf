@@ -33,6 +33,14 @@ resource "kubernetes_deployment_v1" "forgejo" {
             value = 1000
 
           }
+          env {
+            name = "FORGEJO____APP_NAME"
+            value = "piq"
+          }
+          env {
+            name = "FORGEJO____APP_SLOGAN"
+            value = "nothing gay happening here"
+          }
 
           env {
             name  = "FORGEJO__security__INSTALL_LOCK"
