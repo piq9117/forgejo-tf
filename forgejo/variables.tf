@@ -54,10 +54,6 @@ variable "FORGEJO_BUCKET_REGION" {
   type = string
 }
 
-variable "DB_BACKUP_BUCKET" {
-  type = string
-}
-
 variable "INSTANCE_IP" {
   type = string
 }
