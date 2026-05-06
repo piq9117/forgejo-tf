@@ -43,9 +43,4 @@ export TF_VAR_SUB_DOMAIN=
 
 
 ## Local Cluster
-To deploy the local cluster, 
-- `cd` into `local/cluster/` and run `tofu apply`.
-- When the cluster is live. `cd` into `/local/cluster/resources` and run `tofu apply`. This will launch forgejo
-
-To deploy runners,
-- After assigning the runner token to `TF_VAR_FORGEJO_RUNNER_TOKEN`, `cd` into `local/forgejo` and run `tofu apply`.
+TBD
