@@ -22,6 +22,5 @@ module "forgejo" {
   FORGEJO_BUCKET_REGION            = var.FORGEJO_BUCKET_REGION
 
   DB_BACKUP_BUCKET = "test"
-  INSTANCE_IP = data.digitalocean_droplet.forgejo.ipv4_address
-  OWNER_EMAIL = var.OWNER_EMAIL
+  INSTANCE_IP      = data.digitalocean_droplet.forgejo.ipv4_address
 }

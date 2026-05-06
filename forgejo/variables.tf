@@ -62,6 +62,3 @@ variable "INSTANCE_IP" {
   type = string
 }
 
-variable "OWNER_EMAIL" {
-  type = string
-}
