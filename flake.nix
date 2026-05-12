@@ -2,7 +2,9 @@
   description = "forgejo-tf";
   
   inputs.nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
-  outputs = {self, nixpkgs}: 
+
+  inputs.forgejo-tf-gen.url = "git+ssh://git@git.piq9117.com:2222/piq9117/forgejo-tf-gen.git";
+  outputs = {self, nixpkgs, forgejo-tf-gen}: 
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
       nixpkgsFor = forAllSystems(system: import nixpkgs {
@@ -21,6 +23,12 @@
           destroy-cluster = pkgs.writeScriptBin "destroy-cluster" ''
             ${pkgs.k3d}/bin/k3d cluster delete ${cluster-name}
           '';
+          forgejo-tf-gen = pkgs.buildGoModule {
+            pname = "forgejo-tf-gen";
+            version = "0.1.0";
+            src = forgejo-tf-gen;
+            vendorHash = "sha256-ELU8TiKtj/2LEtO9hKQXAswjiy7nzLSKUIbLuZAwghY=";
+          };
         });
 
       devShells = forAllSystems(system: 
@@ -37,6 +45,7 @@
             opentofu
             treefmt
             velero
+            self.packages.${system}.forgejo-tf-gen
           ];
           shellHook = ''
             export PS1='[$PWD]\n❄ '
